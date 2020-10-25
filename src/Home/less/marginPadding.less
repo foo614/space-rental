@@ -1,0 +1,92 @@
+// This set of mixins allows you to create margin and padding classes dynamically.
+
+// In html, you would specify <div class="mr20-xs">Content</div> to give you margin-right: 20px
+// It is based on the responsive capabilities of Bootstrap. <div class="mr20-sm"> would give you
+// 20 pixels of right margin on screens small and larger.
+
+// Mixin control
+
+// .make-margins(@breakpoint, @size, @decrement)
+//        @breakpoint: To be used with Bootstrap. Must supply breakpoints: xs, sm, md or lg
+//        @size: Largest size of margin you desire. Default is 50
+//        @decrement: Amount @size is decremented on each loop. Default is 10
+
+// .make-paddings uses the same parameters
+
+
+// MARGIN
+
+.make-margins(@breakpoint, @size: 50, @decrement: 10) when (@size >= 0) {
+    .make-margins(@breakpoint, @size - @decrement);
+
+    @size-px: ~"@{size}px";
+
+    .m@{size}-@{breakpoint} {
+        margin: @size-px;
+    }
+    .mt@{size}-@{breakpoint} {
+        margin-top: @size-px;
+    }
+    .mr@{size}-@{breakpoint} {
+        margin-right: @size-px;
+    }
+    .mb@{size}-@{breakpoint} {
+        margin-bottom: @size-px;
+    }
+    .ml@{size}-@{breakpoint} {
+        margin-left: @size-px;
+    }
+}
+
+.make-margins(xs);
+
+@media (min-width: @screen-sm-min) {
+    .make-margins(sm);
+}
+
+@media (min-width: @screen-md-min) {
+    .make-margins(md);
+}
+
+@media (min-width: @screen-lg-min) {
+    .make-margins(lg);
+}
+
+
+// PADDING
+
+.make-paddings(@breakpoint, @size: 50, @decrement: 10) when (@size >= 0) {
+    .make-paddings(@breakpoint, @size - @decrement);
+
+    @size-px: ~"@{size}px";
+
+    .p@{size}-@{breakpoint} {
+        padding: @size-px;
+    }
+    .pt@{size}-@{breakpoint} {
+        padding-top: @size-px;
+    }
+    .pr@{size}-@{breakpoint} {
+        padding-right: @size-px;
+    }
+    .pb@{size}-@{breakpoint} {
+        padding-bottom: @size-px;
+    }
+    .pl@{size}-@{breakpoint} {
+        padding-left: @size-px;
+    }
+}
+
+.make-paddings(xs);
+
+@media (min-width: @screen-sm-min) {
+    .make-paddings(sm);
+}
+
+@media (min-width: @screen-md-min) {
+    .make-paddings(md);
+}
+
+@media (min-width: @screen-lg-min) {
+    .make-paddings(lg);
+}
