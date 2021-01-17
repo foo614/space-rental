@@ -40,7 +40,7 @@ function StorageDetails() {
   return selectedStorage ? (
     <>
       <Row justify="center">
-        <Col xs={{ span: 24 }} md={{ span: 6, offset: 6 }} className="p20-md">
+        <Col xs={{ span: 24 }} md={{ span: 6 }} className="p20-md">
           <Carousel dotPosition="bottom">
             {selectedStorage?.images.map((item) => {
               return (
@@ -51,7 +51,7 @@ function StorageDetails() {
             })}
           </Carousel>
         </Col>
-        <Col xs={{ span: 24 }} md={{ span: 12 }} className="p20-md">
+        <Col xs={{ span: 24 }} md={{ span: 6 }} className="p20-md">
           <Card>
             <Meta
               title={(
@@ -78,6 +78,7 @@ function StorageDetails() {
             />
           </Card>
         </Col>
+        {/* <Col xs={{ span: 24 }} md={{ span: 12 }} /> */}
       </Row>
       <Row>
         <Col xs={{ span: 24 }} md={{ span: 6, offset: 6 }} className="pl20-xs">

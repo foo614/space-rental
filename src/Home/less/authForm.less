@@ -1,0 +1,45 @@
+@import '~antd/es/style/themes/default.less';
+//login form
+.other {
+  margin-top: 24px;
+  line-height: 22px;
+  text-align: left;
+
+  .register {
+    float: right;
+  }
+}
+
+//register form
+.success,
+.warning,
+.error {
+  transition: color 0.3s;
+}
+
+.success {
+  color: @success-color;
+}
+
+.warning {
+  color: @warning-color;
+}
+
+.error {
+  color: @error-color;
+}
+
+.progress-pass > .progress {
+  :global {
+    .ant-progress-bg {
+      background-color: @warning-color;
+    }
+  }
+}
+
+.actions {
+  margin-top: 40px;
+  a + a {
+    margin-left: 8px;
+  }
+}

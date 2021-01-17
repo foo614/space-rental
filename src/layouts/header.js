@@ -2,6 +2,10 @@ import React from 'react';
 import TweenOne from 'rc-tween-one';
 import { Menu } from 'antd';
 import { Link } from 'umi';
+import {
+  AppstoreOutlined,
+  LoginOutlined,
+} from '@ant-design/icons';
 import { getChildrenToRender } from '../utils/utils';
 
 const { Item, SubMenu } = Menu;
@@ -25,9 +29,9 @@ class Header extends React.Component {
     const { dataSource, isMobile, ...props } = this.props;
     const { phoneOpen } = this.state;
     const navData = dataSource.Menu.children;
-    const navChildren = navData.map((item) => {
-      const { children: a, subItem, ...itemProps } = item;
-      if (subItem) {
+    const navChildren = navData.map((item, key) => {
+      const { children: a, subItem, isAuth, ...itemProps } = item;
+      if (subItem && isAuth.toString() === localStorage.getItem('isAuth')) {
         return (
           <SubMenu
             key={item.name}
@@ -62,6 +66,8 @@ class Header extends React.Component {
           </SubMenu>
         );
       }
+      const checkAuth = localStorage.getItem('isAuth') === 'null' ? 'false' : 'true';
+      if ((key === 3 || key === 4) && isAuth.toString() === checkAuth) return;
       return (
         <Item key={item.name} {...itemProps}>
           <a {...a} className={`header0-item-block ${a.className}`.trim()}>
@@ -127,7 +133,23 @@ class Header extends React.Component {
               defaultSelectedKeys={['sub0']}
               theme="dark"
             >
-              {navChildren}
+              <Menu.Item key="home">
+                <Link to="/">Home</Link>
+              </Menu.Item>
+              {localStorage.getItem('isAuth') !== 'true' ? (
+                <Menu.Item key="login">
+                  <Link to="/login">Login</Link>
+                </Menu.Item>
+              ) : null }
+              {localStorage.getItem('isAuth') === 'true' ? (
+                <SubMenu
+                  key="SubMenu"
+                  title={`Hi, ${localStorage.getItem('username')}`}
+                >
+                  <Menu.Item key="setting:1"><Link to="/profile">Profile</Link></Menu.Item>
+                  <Menu.Item key="setting:2"><Link to="/logout">Logout</Link></Menu.Item>
+                </SubMenu>
+              ) : null}
             </Menu>
           </TweenOne>
         </div>

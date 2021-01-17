@@ -22,9 +22,9 @@ class Content extends React.PureComponent {
           </div>
           <OverPack {...overPackData}>
             <QueueAnim
-              type="bottom"
+              type="top"
               key="block"
-              leaveReverse
+              delay={500}
               component={Row}
               componentProps={childWrapper}
             >

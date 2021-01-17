@@ -1,7 +1,6 @@
 /* eslint no-undef: 0 */
 /* eslint arrow-parens: 0 */
-import React, { useEffect, useState } from 'react';
-import { enquireScreen } from 'enquire-js';
+import React from 'react';
 
 import Banner0 from './Banner0';
 import Content0 from './Content0';
@@ -17,18 +16,11 @@ import {
 import './less/antMotionStyle.less';
 
 function Home() {
-  // const [isMobile, setIsMobile] = useState(null);
-  // useEffect(() => {
-  //   enquireScreen((b) => {
-  //     setIsMobile(!!b);
-  //   });
-  // }, []);
   const children = [
     <Banner0
       id="Banner0_0"
       key="Banner0_0"
       dataSource={Banner00DataSource}
-      // isMobile={isMobile}
     />,
     <Content0
       id="Content0_0"

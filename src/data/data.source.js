@@ -1,4 +1,7 @@
 import React from 'react';
+import { Avatar } from 'antd';
+import LogoutOutlined from '@ant-design/icons/LogoutOutlined';
+import UserOutlined from '@ant-design/icons/UserOutlined';
 
 export const Nav00DataSource = {
   wrapper: { className: 'header0 home-page-wrapper' },
@@ -14,34 +17,81 @@ export const Nav00DataSource = {
       {
         name: 'item1',
         className: 'header0-item',
+        isAuth: false,
         children: {
-          href: '#',
+          href: '/',
           children: [{ children: 'Home', name: 'text' }],
-        },
-      },
-      {
-        name: 'item2',
-        className: 'header0-item',
-        children: {
-          href: '#',
-          children: [{ children: 'Log In', name: 'text' }],
-        },
-      },
-      {
-        name: 'item3',
-        className: 'header0-item',
-        children: {
-          href: '#',
-          children: [{ children: 'Store Stuff', name: 'text' }],
         },
       },
       {
         name: 'item4',
         className: 'header0-item',
+        isAuth: false,
         children: {
-          href: '#',
-          children: [{ children: 'Help', name: 'text' }],
+          href: '/login',
+          children: [{ children: 'Log In', name: 'text' }],
         },
+      },
+      {
+        name: 'item5',
+        className: 'header0-item',
+        isAuth: true,
+        children: {
+          href: '/profile',
+          children: [{ children: <Avatar icon={<UserOutlined />} />, name: 'text' }],
+        },
+        subItem: [
+          {
+            name: 'sub0',
+            className: 'item-sub',
+            children: {
+              className: 'item-sub-item',
+              href: '/profile',
+              children: [
+                {
+                  name: 'image0',
+                  className: 'item-image',
+                  children: <UserOutlined style={{ marginLeft: '10px' }} />,
+                },
+                {
+                  name: 'title',
+                  className: 'item-title',
+                  children: localStorage.getItem('username'),
+                },
+                {
+                  name: 'content',
+                  className: 'item-content',
+                  children: '',
+                },
+              ],
+            },
+          },
+          {
+            name: 'sub1',
+            className: 'item-sub',
+            children: {
+              className: 'item-sub-item',
+              href: '/logout',
+              children: [
+                {
+                  name: 'image0',
+                  className: 'item-image',
+                  children: <LogoutOutlined style={{ marginLeft: '10px' }} />,
+                },
+                {
+                  name: 'title',
+                  className: 'item-title',
+                  children: 'Logout',
+                },
+                {
+                  name: 'content',
+                  className: 'item-content',
+                  children: '',
+                },
+              ],
+            },
+          },
+        ],
       },
     ],
   },
